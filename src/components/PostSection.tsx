@@ -27,7 +27,7 @@ export default function PostSection() {
   const filteredData = data?.filter((post) =>
     post.title.toLowerCase().includes(searchQuery),
   );
-  5;
+
   if (error) return <div>Error loading posts.</div>;
 
   return (
