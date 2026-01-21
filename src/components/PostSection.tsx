@@ -31,9 +31,9 @@ export default function PostSection() {
   if (error) return <div>Error loading posts.</div>;
 
   return (
-    <section className="grid grid-cols-1 gap-6 w-4/5">
+    <section className="grid grid-cols-1 gap-4 md:gap-6 w-full md:w-4/5 px-4 md:px-0">
       {isLoading ? (
-        <div className="grid gap-6">
+        <div className="grid gap-4 md:gap-6">
           {[...Array(6)].map((_, i) => (
             <SkeletonCard key={i} />
           ))}
