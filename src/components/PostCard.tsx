@@ -15,15 +15,14 @@ export const PostCard = ({
         </span>
         <span className="text-xs text-gray-400 font-mono">ID: {id}</span>
       </div>
-
       <h2 className="mb-2 text-xl font-bold text-gray-800 leading-tight group-hover:text-blue-600 transition-colors">
         {title}
       </h2>
-
       <p className="grow text-gray-600 text-sm leading-relaxed">{body}</p>
 
+      {/* TODO: Feature to view more details about the post and more posts from the user. */}
       <div className="mt-6 pt-4 border-t border-gray-100 flex items-center text-blue-500 font-medium text-sm cursor-pointer hover:underline">
-        More posts
+        Read more
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-4 w-4 ml-1"
