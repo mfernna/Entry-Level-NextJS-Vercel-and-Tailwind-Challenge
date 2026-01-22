@@ -17,13 +17,13 @@ export const Navbar = () => {
 
       if (userId) {
         params.set(QueryParams.USER_ID, userId);
-        params.set(QueryParams.PAGE, "1");
       } else params.delete(QueryParams.USER_ID);
 
       if (search) {
         params.set(QueryParams.SEARCH, search);
-        params.set(QueryParams.PAGE, "1");
       } else params.delete(QueryParams.SEARCH);
+
+      params.set(QueryParams.PAGE, "1");
 
       router.push(`${pathname}?${params.toString()}`);
     }, 500);
