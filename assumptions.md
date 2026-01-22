@@ -31,3 +31,7 @@
     Sonner (Toasts): I used Sonner to show a quick warning if the connection is taking too long (more than 3 seconds). It’s a nice way to let the user know what’s happening.
 
     Skeletons: I added Skeleton cards to show the layout while the data is still loading, which feels much more professional than a blank screen or a simple "Loading..." text.
+
+## Tests
+
+    Implemented some simple tests using Jest to enssure the cards correct render and as well give some consistency to the project by installing the necessary librarys to test whenever its needed.

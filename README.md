@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Streaver Frontend Challenge - Post Explorer
 
-## Getting Started
+A performance-focused Post Explorer built with **Next.js**, **SWR**, and **Tailwind CSS**. This app allows users to search and filter posts from the JSONPlaceholder API with a seamless, responsive, and mobile-friendly interface.
 
-First, run the development server:
+## [🚀 Live Demo](https://entry-level-next-js-vercel-and-tail.vercel.app/posts)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✨ Features
+
+- **Real-time Search & Filter** - Search posts by title with debouncing
+- **User Filtering** - Filter posts by user ID
+- **Smart Caching** - SWR handles data fetching with automatic revalidation
+- **Loading States** - Beautiful skeleton loaders while data loads
+- **Mobile Responsive** - Fully optimized for desktop and mobile devices
+- **Error Handling** - User-friendly error messages and slow connection warnings
+- **Performance Optimized** - Lazy loading and efficient rendering
+
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js 15 (App Router)
+- **Data Fetching:** SWR + Axios (caching & revalidation)
+- **Styling:** Tailwind CSS 4
+- **Testing:** Jest + React Testing Library
+- **UI Feedback:** Sonner (Toasts)
+- **API:** JSONPlaceholder (mock posts data)
+
+## ⚙️ Installation & Setup
+
+1. **Clone & Install:**
+
+   ```bash
+   git clone https://github.com/mfernna/Entry-Level-NextJS-Vercel-and-Tailwind-Challenge.git
+   cd Entry-Level-NextJS-Vercel-and-Tailwind-Challenge
+   npm install
+   ```
+
+2. **Run Development Server:**
+
+   ```bash
+   npm run dev
+   ```
+
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+3. **Build for Production:**
+   ```bash
+   npm run build
+   npm start
+   ```
+
+## 📁 Project Structure
+
+```
+src/
+├── app/              # Next.js app router
+│   ├── layout.tsx    # Root layout
+│   ├── page.tsx      # Home page
+│   └── posts/        # Posts page
+├── api/              # API utilities
+│   ├── axios.ts      # Axios instance config
+│   └── post.ts       # Post fetching functions
+├── components/       # Reusable React components
+│   ├── Navbar.tsx    # Search and filter navbar
+│   ├── PostCard.tsx  # Individual post card
+│   ├── PostSection.tsx # Posts grid container
+│   └── Skeleton.tsx   # Loading skeleton
+├── hooks/            # Custom React hooks
+├── types/            # TypeScript type definitions
+│   └── post.ts       # Post type definition
+└── utils/            # Helper functions
+    └── params.ts     # Query parameter utilities
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Available Scripts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `npm run dev` - Start development server with hot reload
+- `npm run build` - Build for production
+- `npm start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm test` - Run Jest tests
+- `npm run test:watch` - Run tests in watch mode
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📝 How It Works
 
-## Learn More
+1. **Navbar Component** - Users can enter a User ID to filter posts or search by title
+2. **Post Fetching** - SWR fetches posts from JSONPlaceholder API with caching
+3. **Filtering** - Posts are filtered based on user ID (query param) and search query
+4. **Display** - Posts are rendered in a responsive grid with skeleton loaders
+5. **Feedback** - Toast notifications alert users about slow connections
 
-To learn more about Next.js, take a look at the following resources:
+## 🔗 API Reference
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Fetch Posts:** `GET /api/posts` or `GET /api/posts?userId={id}`
+- **Data Source:** [JSONPlaceholder](https://jsonplaceholder.typicode.com/posts)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📦 Dependencies
 
-## Deploy on Vercel
+- `next` - React framework
+- `swr` - Data fetching library
+- `axios` - HTTP client
+- `tailwindcss` - Utility-first CSS
+- `sonner` - Toast notifications
+- `jest` & `@testing-library/react` - Testing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🎯 Performance Optimizations
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Server-side rendering for better SEO
+- SWR caching strategy with revalidation
+- Debounced search input (500ms)
+- Skeleton loading states
+- Lazy component loading
+- Responsive image handling
+
+## 📄 License
+
+This project is private and part of the Streaver Frontend Challenge.

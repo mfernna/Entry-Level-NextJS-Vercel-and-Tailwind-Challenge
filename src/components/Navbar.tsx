@@ -6,7 +6,6 @@ export const Navbar = () => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const params = new URLSearchParams(searchParams);
 
   const [userId, setUserId] = useState(searchParams.get(QueryParams.USER_ID));
   const [search, setSearch] = useState(searchParams.get(QueryParams.SEARCH));
