@@ -2,16 +2,28 @@ import useSWR from "swr";
 import { getPosts } from "../api/post";
 import { SkeletonCard } from "./Skeleton";
 import { PostCard } from "./PostCard";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { QueryParams } from "../utils/params";
 import { toast } from "sonner";
+import { PAGE_LIMIT } from "../utils/shared.consts";
 
 export default function PostSection() {
   const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+  const page = Number(searchParams.get("page")) || 1;
   const userId = searchParams.get(QueryParams.USER_ID);
   const searchQuery = searchParams.get(QueryParams.SEARCH)?.toLowerCase() || "";
 
-  const fetchUrl = userId ? `/posts?userId=${userId}` : "/posts";
+  let fetchUrl = `/posts?_page=${page}&_limit=${PAGE_LIMIT}`;
+
+  if (userId) fetchUrl += `&userId=${userId}`;
+
+  const changePage = (newPage: number) => {
+    const params = new URLSearchParams(searchParams);
+    params.set("page", newPage.toString());
+    router.push(`${pathname}?${params.toString()}`);
+  };
 
   // I am not being able to test the timeout and onLoadingSlow properly but
   // I believe that 2 seconds is too much for most connections.
@@ -49,6 +61,32 @@ export default function PostSection() {
           )}
         </>
       )}
+      <div
+        className="flex justify-center gap-4 mt-8 
+        [&>button]:hover:cursor-pointer 
+        [&>button]:disabled:opacity-50 
+        [&>button]:disabled:hover:cursor-not-allowed 
+        [&>button]:rounded
+      [&>button]:bg-gray-200
+        [&>button]:px-3
+        [&>button]:py-2
+        [&>button]:text-black
+        [&>button]:font-medium
+        "
+      >
+        <button onClick={() => changePage(page - 1)} disabled={page === 1}>
+          back
+        </button>
+        <span className="flex items-center">Page {page}</span>
+        <button
+          onClick={() => changePage(page + 1)}
+          disabled={
+            !data || data.length < PAGE_LIMIT || filteredData?.length === 0
+          }
+        >
+          next
+        </button>
+      </div>
     </section>
   );
 }

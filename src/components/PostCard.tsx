@@ -1,4 +1,6 @@
+import { toast } from "sonner";
 import { Post } from "../types/post";
+import { RightArrow } from "./icons/RightArrow";
 
 interface PostCardProps {
   post: Post;
@@ -21,22 +23,14 @@ export const PostCard = ({
       <p className="grow text-gray-600 text-sm leading-relaxed">{body}</p>
 
       {/* TODO: Feature to view more details about the post and more posts from the user. */}
-      <div className="mt-6 pt-4 border-t border-gray-100 flex items-center text-blue-500 font-medium text-sm cursor-pointer hover:underline">
-        Read more
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-4 w-4 ml-1"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+      <div className="mt-6 pt-4 border-t border-gray-100 flex items-center text-blue-500 font-medium text-sm">
+        <button
+          onClick={() => toast.info("Feature not implemented yet!")}
+          className="cursor-pointer hover:underline"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 5l7 7-7 7"
-          />
-        </svg>
+          Read more
+        </button>
+        <RightArrow className="size-4 ml-1" />
       </div>
     </div>
   );

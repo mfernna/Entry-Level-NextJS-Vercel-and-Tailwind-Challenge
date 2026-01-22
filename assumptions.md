@@ -18,11 +18,13 @@
 
 ## Debouncing
 
-    To avoid spamming the API every time someone types a single letter, I built a custom useDebounce hook. This ensures that the app only triggers a new fetch or updates the URL once the user has stopped typing for 500ms. It makes the UI feel much smoother.
+    To avoid spamming the API every time someone types a single letter, I added a debounce logic. This ensures that the app only triggers a new fetch or updates the URL once the user has stopped typing for 500ms. It makes the UI feel much smoother.
 
 ## Pagination
 
     Since the API returns a lot of posts, I added a simple pagination system. It’s better for the browser to render 10 cards at a time than 100.
+
+    - Optimistic Pagination (current issue): Since the API does not provide a header with the total amount of records, I implemented an optimistic navigation logic. If the current page returns the maximum number of items (10), the "Next" button remains enabled. If the next page is empty, the UI handles it by showing the "No posts found" state.
 
 ## Feedback & UX
 
