@@ -11,7 +11,7 @@ export default function PostSection() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  const page = Number(searchParams.get("page")) || 1;
+  const page = Number(searchParams.get(QueryParams.PAGE)) || 1;
   const userId = searchParams.get(QueryParams.USER_ID);
   const searchQuery = searchParams.get(QueryParams.SEARCH)?.toLowerCase() || "";
 
@@ -21,12 +21,10 @@ export default function PostSection() {
 
   const changePage = (newPage: number) => {
     const params = new URLSearchParams(searchParams);
-    params.set("page", newPage.toString());
+    params.set(QueryParams.PAGE, newPage.toString());
     router.push(`${pathname}?${params.toString()}`);
   };
 
-  // I am not being able to test the timeout and onLoadingSlow properly but
-  // I believe that 2 seconds is too much for most connections.
   const { data, error, isLoading } = useSWR(fetchUrl, getPosts, {
     revalidateOnReconnect: true,
     refreshInterval: 0,
@@ -43,7 +41,10 @@ export default function PostSection() {
   if (error) return <div>Error loading posts.</div>;
 
   return (
-    <section className="grid grid-cols-1 gap-4 md:gap-6 w-full md:w-4/5 px-4 md:px-0">
+    <section
+      aria-busy={isLoading}
+      className="grid grid-cols-1 gap-4 md:gap-6 w-full md:w-4/5 px-4 md:px-0"
+    >
       {isLoading ? (
         <div className="grid gap-4 md:gap-6">
           {[...Array(6)].map((_, i) => (
@@ -55,13 +56,13 @@ export default function PostSection() {
           {filteredData && filteredData.length > 0 ? (
             filteredData.map((post) => <PostCard key={post.id} post={post} />)
           ) : (
-            <div className="text-gray-500 italic">
+            <span className="text-gray-500 italic">
               No posts found matching your search.
-            </div>
+            </span>
           )}
         </>
       )}
-      <div
+      <footer
         className="flex justify-center gap-4 mt-8 
         [&>button]:hover:cursor-pointer 
         [&>button]:disabled:opacity-50 
@@ -74,7 +75,11 @@ export default function PostSection() {
         [&>button]:font-medium
         "
       >
-        <button onClick={() => changePage(page - 1)} disabled={page === 1}>
+        <button
+          onClick={() => changePage(page - 1)}
+          disabled={page === 1}
+          aria-label="Previous page"
+        >
           back
         </button>
         <span className="flex items-center">Page {page}</span>
@@ -83,10 +88,11 @@ export default function PostSection() {
           disabled={
             !data || data.length < PAGE_LIMIT || filteredData?.length === 0
           }
+          aria-label="Next page"
         >
           next
         </button>
-      </div>
+      </footer>
     </section>
   );
 }

@@ -1,8 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import { PostCard } from "../components/PostCard";
 import "@testing-library/jest-dom";
+import { Post } from "../types/post";
 
-const mockPost = {
+const mockPost: Post = {
   userId: 1,
   id: 101,
   title: "Testing Streaver Challenge",

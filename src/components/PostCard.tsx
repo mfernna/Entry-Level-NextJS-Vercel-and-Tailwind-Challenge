@@ -10,13 +10,13 @@ export const PostCard = ({
   post: { userId, id, title, body },
 }: PostCardProps) => {
   return (
-    <div className="flex flex-col h-full p-6 bg-white border border-gray-200 rounded-xl shadow-sm transition-all duration-300 hover:shadow-md hover:border-blue-300 group">
-      <div className="flex justify-between items-start mb-4">
+    <article className="flex flex-col h-full p-6 bg-white border border-gray-200 rounded-xl shadow-sm transition-all duration-300 hover:shadow-md hover:border-blue-300 group">
+      <section className="flex justify-between items-start mb-4">
         <span className="px-2 py-1 text-xs font-semibold text-blue-600 bg-blue-50 rounded-md border border-blue-100 uppercase tracking-wider">
           User #{userId}
         </span>
         <span className="text-xs text-gray-400 font-mono">ID: {id}</span>
-      </div>
+      </section>
       <h2 className="mb-2 text-xl font-bold text-gray-800 leading-tight group-hover:text-blue-600 transition-colors">
         {title}
       </h2>
@@ -32,6 +32,6 @@ export const PostCard = ({
         </button>
         <RightArrow className="size-4 ml-1" />
       </div>
-    </div>
+    </article>
   );
 };

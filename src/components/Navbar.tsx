@@ -36,6 +36,7 @@ export const Navbar = () => {
       <div className="[&>input]:w-full flex flex-col md:flex-row gap-2 md:gap-4 w-full md:w-auto [&>input]:mt-2 [&>input]:p-2 [&>input]:border-gray-300 [&>input]:border-b [&>input]:outline-none">
         <input
           type="number"
+          aria-label="Filter by User ID"
           placeholder="User ID"
           className="md:w-24"
           value={userId ?? ""}
@@ -43,6 +44,7 @@ export const Navbar = () => {
         />
         <input
           type="search"
+          aria-label="Search posts by title"
           placeholder="Search posts..."
           className="md:w-auto"
           value={search ?? ""}

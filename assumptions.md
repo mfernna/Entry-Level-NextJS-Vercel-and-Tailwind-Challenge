@@ -34,4 +34,4 @@
 
 ## Tests
 
-    Implemented some simple tests using Jest to enssure the cards correct render and as well give some consistency to the project by installing the necessary librarys to test whenever its needed.
+    Implemented some simple tests using Jest to enssure the cards correct render and as well give some consistency to the project by installing the necessary libraries to test whenever its needed.
