@@ -103,11 +103,10 @@ src/
 
 ## 🎯 Performance Optimizations
 
-- Server-side rendering for better SEO
+- Client-side data fetching with SWR for instant page transitions
 - SWR caching strategy with revalidation
 - Debounced search input (500ms)
 - Skeleton loading states
-- Lazy component loading
 - Responsive image handling
 
 ## 📄 License
